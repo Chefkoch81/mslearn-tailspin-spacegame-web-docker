@@ -18,11 +18,11 @@ stages:
     - task: Docker@2
       displayName: 'Build and push the image to container registry'
       inputs:
-        command: buildAndPush
-        buildContext: $(Build.Repository.LocalPath)
-        repository: $(webRepository)
+        containerRegistry: 'Container Registry Connection - Tailspin - Space Game'
+        repository: '$(webRepository)'
+        command: 'buildAndPush'
         dockerfile: '$(Build.SourcesDirectory)/Tailspin.SpaceGame.Web/Dockerfile'
-        containerRegistry: 'Container Registry Connection'
+        buildContext: '$(Build.Repository.LocalPath)'
         tags: |
           $(tag)
 
